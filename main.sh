@@ -5,7 +5,6 @@ echo "       Apache2 Script"
 echo "    By DiscordFreeVPS"
 echo "=============================="
 
-# Verificar si existe el archivo token.txt y leer el token si existe
 if [ -f token.txt ]; then
     NGROK_AUTH_TOKEN=$(<token.txt)
     echo "Using Ngrok authtoken from token.txt."
@@ -14,13 +13,11 @@ else
     echo "Visit https://dashboard.ngrok.com/get-started/your-authtoken to sign up and get your authtoken."
     read -p "Please enter your Ngrok authtoken: " ngrok_token
 
-    # Guardar el token de ngrok en una variable y en un archivo
     NGROK_AUTH_TOKEN="$ngrok_token"
     echo "$NGROK_AUTH_TOKEN" > token.txt
     echo "Ngrok authtoken saved to token.txt."
 fi
 
-# Función para mostrar el menú principal
 show_menu() {
     clear
     echo "=============================="
